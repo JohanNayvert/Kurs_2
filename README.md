@@ -1,1 +1,1 @@
-# Kurs_2
+# Kurs_2 Java Core
