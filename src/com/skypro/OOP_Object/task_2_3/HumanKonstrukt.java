@@ -17,25 +17,21 @@ public class HumanKonstrukt {
             this.yearsBerth = yearsBerth;
         } else {
             this.yearsBerth = 0;
-            System.out.print("Информация не указана!");
         }
         if (name != null) {
             this.name = name;
         } else {
-            this.name = null;
-            System.out.print("Информация не указана! ");
+            this.name = "Информация не указана!";
         }
         if (cityBerth != null) {
             this.cityBerth = cityBerth;
         } else {
-            this.cityBerth = null;
-            System.out.print("Информация не указана! ");
+            this.cityBerth = "Информация не указана!";
         }
         if (position != null) {
             this.position = position;
         } else {
-            this.position = null;
-            System.out.print("Информация не указана! ");
+            this.position = "Информация не указана!";
         }
         this.printHuman();
     }
