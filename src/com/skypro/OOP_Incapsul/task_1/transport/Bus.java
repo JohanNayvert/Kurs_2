@@ -3,7 +3,6 @@ package com.skypro.OOP_Incapsul.task_1.transport;
 public class Bus extends Transport {
     public Bus(String brand, String model, int productionYear, String productionCountry, String color, double maxSpeed) {
         super(brand, model, productionYear, productionCountry, color, maxSpeed);
-        printBus();
         this.refill();
     }
 
@@ -12,11 +11,13 @@ public class Bus extends Transport {
         return "Заправляеться бензином или дизелем по транспортной карте";
     }
 
-    public void printBus() {
-        System.out.println("Название " + getBrand() +
+    @Override
+    public String toString() {
+        return "Название " + getBrand() +
                 ", модель " + getModel() +
-                ", года выпуска " + getProductionYear() +
-                ", сборка в " + getProductionCountry() +
-                ", максимальная скорость " + getMaxSpeed());
+                ", год выпуска: " + getProductionYear() +
+                ", сборка в " + getProductionCountry()+
+                ", цвет: " + getColor() +
+                ", максимальная скорость: " + getMaxSpeed();
     }
 }

@@ -15,7 +15,6 @@ public class Predator extends Mammals {
         this.go();
         this.walk();
         this.hunters();
-        this.printPredator();
     }
 
     public String getTypeEat() {
@@ -59,9 +58,10 @@ public class Predator extends Mammals {
         return "Животное охотиться ";
     }
 
-    public void printPredator() {
-        System.out.println("Класс: Животные, Подкласс: Млекопетающие, Отряд: Хищники, Название животного: " +
+    @Override
+    public String toString() {
+        return "Класс: Животные, Подкласс: Млекопетающие, Отряд: Хищники, Название животного: " +
                 getNameAnimals() + ", возрвст: " + getYearsBerth() + ", среда проживания: " + getLivingEnvironment() + ", скорость передвижения: " + getSpeedGo() + ", тип еды: " + getTypeEat() +
-                ", в течении жизни животное: " + eat() + ", " + sleep() + ", " + go() + ", " + walk() + ", " + hunters());
+                ", в течении жизни животное: " + eat() + ", " + sleep() + ", " + go() + ", " + walk() + ", " + hunters();
     }
 }

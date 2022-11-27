@@ -19,7 +19,6 @@ public class Train extends Transport {
         this.nameStation = validateNameStation(nameStation);
         this.endingStation = validateNEndingStation(endingStation);
         this.amountWagons = validateAmountWagons(amountWagons);
-        this.printTrain();
         this.refill();
     }
 
@@ -83,32 +82,24 @@ public class Train extends Transport {
         this.amountWagons = validateAmountWagons(amountWagons);
     }
 
-    public void printTrain() {
-        System.out.println(", Название " + getBrand() +
-                ", модель " + getModel() +
-                ", года выпуска " + getProductionYear() +
-                ", сборка в " + getProductionCountry() +
-                ", максимальная скорость " + getMaxSpeed() +
-                ", цена билета " + getTripPrice() +
-                ", время поездки " + getTripTime() +
-                ", место отправки " + getNameStation() +
-                ", место прибытия " + getEndingStation() +
-                ", количество вагонов " + getAmountWagons());
+        public void printTrain() {
+        System.out.println(toString());
     }
-
-
     public String refill() {
         return "Заправляеться дизельным топливом на станции";
     }
 
     @Override
     public String toString() {
-        return "Train{" +
-                "tripPrice=" + tripPrice +
-                ", tripTime=" + tripTime +
-                ", nameStation='" + nameStation + '\'' +
-                ", endingStation='" + endingStation + '\'' +
-                ", amountWagons=" + amountWagons +
-                '}';
+        return  "Название " + getBrand() +
+                ", модель " + getModel() +
+                ", года выпуска " + getProductionYear() +
+                ", сборка в " + getProductionCountry() +
+                ", максимальная скорость: " + getMaxSpeed() +
+                ", цена билета: " + getTripPrice() +
+                ", время поездки: " + getTripTime() +
+                ", место отправки- " + getNameStation() +
+                ", место прибытия- " + getEndingStation() +
+                ", количество вагонов: " + getAmountWagons();
     }
 }

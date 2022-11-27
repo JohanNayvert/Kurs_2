@@ -15,7 +15,6 @@ public class Flightless extends Birds {
         this.go();
         this.hunters();
         this.walk();
-        this.printFlightless();
     }
 
     public String getTypeGo() {
@@ -59,9 +58,10 @@ public class Flightless extends Birds {
         return "Животное гуляет ";
     }
 
-    public void printFlightless() {
-        System.out.println("Класс: Животные, Подкласс: Птицы, Отряд: Нелетающие, Название животного: " +
+    @Override
+    public String toString() {
+        return "Класс: Животные, Подкласс: Птицы, Отряд: Нелетающие, Название животного: " +
                 getNameAnimals() + ", возрвст: " + getYearsBerth() + ", среда проживания: " + getLivingEnvironment() + ", тип еды: " + getTypeGo() +
-                ", в течении жизни животное: " + eat() + ", " + sleep() + ", " + go() + ", " + hunters() + ", " + walk());
+                ", в течении жизни животное: " + eat() + ", " + sleep() + ", " + go() + ", " + hunters() + ", " + walk();
     }
 }

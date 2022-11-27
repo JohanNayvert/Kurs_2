@@ -14,7 +14,6 @@ public class Amphibians extends Animals {
         this.sleep();
         this.go();
         this.hunters();
-        this.printAmphibias();
     }
 
     public String getLivingEnvironment() {
@@ -54,9 +53,10 @@ public class Amphibians extends Animals {
         return "Животное охотится ";
     }
 
-    public void printAmphibias() {
-        System.out.println("Класс: Животные, Подкласс: Земноводные, Название животного: " +
+    @Override
+    public String toString() {
+        return "Класс: Животные, Подкласс: Земноводные, Название животного: " +
                 getNameAnimals() + ", возрвст: " + getYearsBerth() + ", среда проживания: " + getLivingEnvironment() +
-                ", в течении жизни животное: " + eat() + ", " + sleep() + ", " + go() + ", " + hunters());
+                ", в течении жизни животное: " + eat() + ", " + sleep() + ", " + go() + ", " + hunters();
     }
 }

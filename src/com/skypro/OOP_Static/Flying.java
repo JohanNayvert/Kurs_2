@@ -15,7 +15,6 @@ public class Flying extends Birds {
         this.go();
         this.hunters();
         this.fly();
-        this.printFlying();
     }
 
     public String getTypeGo() {
@@ -59,9 +58,10 @@ public class Flying extends Birds {
         return "Животное летает ";
     }
 
-    public void printFlying() {
-        System.out.println("Класс: Животные, Подкласс: Птицы, Отряд: Летающие, Название животного: " +
+    @Override
+    public String toString() {
+        return "Класс: Животные, Подкласс: Птицы, Отряд: Летающие, Название животного: " +
                 getNameAnimals() + ", возрвст: " + getYearsBerth() + ", среда проживания: " + getLivingEnvironment() + ", тип еды: " + getTypeGo() +
-                ", в течении жизни животное: " + eat() + ", " + sleep() + ", " + go() + ", " + hunters() + ", " + fly());
+                ", в течении жизни животное: " + eat() + ", " + sleep() + ", " + go() + ", " + hunters() + ", " + fly();
     }
 }

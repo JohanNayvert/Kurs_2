@@ -1,6 +1,7 @@
 package com.skypro.OOP_Incapsul.task_1.transport;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Car extends Transport {
 
@@ -90,23 +91,6 @@ public class Car extends Transport {
 
     }
 
-    public void printCar() {
-        System.out.println(getBrand() + getModel() +
-                ", года выпуска " + getProductionYear() +
-                ", сборка в " + getProductionCountry() +
-                ", цвет кузова " + getColor() +
-                ", обьем двигателя " + engineVolume +
-                ", тип трансмиссии " + typeTransmission +
-                ", тип кузова " + typeCarcase +
-                ", регистрационный номер " + registrationNumber +
-                ", количество мест " + coastSeats +
-                ", тип шин " + (changeTires() ? "летняя" : "зимняя") +
-                ", доступ " + (getKey().isKeylessAccess() ? "ключевой" : "безключевой") +
-                ", номер страховки " + (getInsurance().getNumberInsurance()) +
-                ", цена страховки " + (getInsurance().getCostInsurance()) +
-                ", дата окончания страховки " + getInsurance().durationOfInsurance);
-    }
-
     public Car(String brand, String model, double engineVolume, String color, int productionYear,
                String productionCountry, String typeTransmission, String typeCarcase, int coastSeats,
                String registrationNumber, Boolean typeTires, Key key, Insurance insurance, double maxSpeed) {
@@ -147,7 +131,6 @@ public class Car extends Transport {
             this.insurance = insurance;
         }
         this.typeTires = true;
-        this.printCar();
         this.refill();
     }
 
@@ -228,6 +211,19 @@ public class Car extends Transport {
         return false;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car car = (Car) o;
+        return Double.compare(car.getEngineVolume(), getEngineVolume()) == 0 && getCoastSeats() == car.getCoastSeats() && isTypeTires() == car.isTypeTires() && getTypeTransmission().equals(car.getTypeTransmission()) && getTypeCarcase().equals(car.getTypeCarcase()) && getRegistrationNumber().equals(car.getRegistrationNumber()) && getKey().equals(car.getKey()) && getInsurance().equals(car.getInsurance());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEngineVolume(), getTypeTransmission(), getTypeCarcase(), getRegistrationNumber(), getCoastSeats(), isTypeTires(), getKey(), getInsurance());
+    }
+
     public boolean checkRegNumber() {
         if (registrationNumber.length() != 9)
             return false;
@@ -239,5 +235,23 @@ public class Car extends Transport {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return getBrand() + getModel() +
+                ", года выпуска " + getProductionYear() +
+                ", сборка в " + getProductionCountry() +
+                ", цвет кузова " + getColor() +
+                ", обьем двигателя " + engineVolume +
+                ", тип трансмиссии " + typeTransmission +
+                ", тип кузова " + typeCarcase +
+                ", регистрационный номер " + registrationNumber +
+                ", количество мест " + coastSeats +
+                ", тип шин " + (changeTires() ? "летняя" : "зимняя") +
+                ", доступ " + (getKey().isKeylessAccess() ? "ключевой" : "безключевой") +
+                ", номер страховки " + (getInsurance().getNumberInsurance()) +
+                ", цена страховки " + (getInsurance().getCostInsurance()) +
+                ", дата окончания страховки " + getInsurance().durationOfInsurance;
     }
 }

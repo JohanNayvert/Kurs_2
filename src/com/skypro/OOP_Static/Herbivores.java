@@ -13,7 +13,6 @@ public class Herbivores extends Mammals {
         this.go();
         this.walk();
         this.pasture();
-        this.printHerbivores();
     }
 
     public String getTypeEat() {
@@ -44,9 +43,10 @@ public class Herbivores extends Mammals {
         return "Животное пасется ";
     }
 
-    public void printHerbivores() {
-        System.out.println("Класс: Животные, Подкласс: Млекопетающие, Отряд: Травоядные, Название животного: " +
+    @Override
+    public String toString() {
+        return "Класс: Животные, Подкласс: Млекопетающие, Отряд: Травоядные, Название животного: " +
                 getNameAnimals() + ", возрвст: " + getYearsBerth() + ", среда проживания: " + getLivingEnvironment() + ", скорость передвижения: " + getSpeedGo() + ", тип еды: " + getTypeEat() +
-                ", в течении жизни животное: " + eat() + ", " + sleep() + ", " + go() + ", " + walk() + ", " + pasture());
+                ", в течении жизни животное: " + eat() + ", " + sleep() + ", " + go() + ", " + walk() + ", " + pasture();
     }
 }
