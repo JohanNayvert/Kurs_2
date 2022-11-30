@@ -1,15 +1,11 @@
 package com.skypro.OOP_Incapsul.task_1.transport;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
-public class Car {
+public class Car extends Transport {
 
-    private String brand;
-    private String model;
     private double engineVolume;
-    private String color;
-    private int productionYear;
-    private String productionCountry;
     private String typeTransmission;
     private String typeCarcase;
     private String registrationNumber;
@@ -17,6 +13,11 @@ public class Car {
     private boolean typeTires;
     private Key key;
     private Insurance insurance;
+
+    @Override
+    public String refill() {
+        return "Заправлять бензином, дизелем на заправке или заряжать на специальных электроду-парковках, если это электрокар";
+    }
 
     public static class Key {
         private boolean remoteEngineStart;
@@ -90,55 +91,14 @@ public class Car {
 
     }
 
-    public void printCar() {
-        System.out.println(brand + model +
-                ", года выпуска " + productionYear +
-                ", сборка в " + productionCountry +
-                ", цвет кузова " + color +
-                ", обьем двигателя " + engineVolume +
-                ", тип трансмиссии " + typeTransmission +
-                ", тип кузова " + typeCarcase +
-                ", регистрационный номер " + registrationNumber +
-                ", количество мест " + coastSeats +
-                ", тип шин " + (changeTires() ? "летняя" : "зимняя") +
-                ", доступ " + (getKey().isKeylessAccess() ? "ключевой" : "безключевой") +
-                ", номер страховки " + (getInsurance().getNumberInsurance()) +
-                ", цена страховки " + (getInsurance().getCostInsurance()) +
-                ", дата окончания страховки " + getInsurance().durationOfInsurance);
-    }
-
     public Car(String brand, String model, double engineVolume, String color, int productionYear,
                String productionCountry, String typeTransmission, String typeCarcase, int coastSeats,
-               String registrationNumber, Boolean typeTires, Key key, Insurance insurance) {
-        if (brand != null && !brand.isEmpty() && !brand.isBlank()) {
-            this.brand = brand;
-        } else {
-            this.brand = "Информация не указана!";
-        }
-        if (model != null && !model.isEmpty() && !model.isBlank()) {
-            this.model = model;
-        } else {
-            this.model = "Информация не указана!";
-        }
+               String registrationNumber, Boolean typeTires, Key key, Insurance insurance, double maxSpeed) {
+        super(brand, model, productionYear, productionCountry, color, maxSpeed);
         if (engineVolume > 0) {
             this.engineVolume = engineVolume;
         } else {
             this.engineVolume = 0;
-        }
-        if (color != null && !color.isEmpty() && !color.isBlank()) {
-            this.color = color;
-        } else {
-            this.color = "Информация не указана!";
-        }
-        if (productionYear > 0) {
-            this.productionYear = productionYear;
-        } else {
-            this.productionYear = 0;
-        }
-        if (productionCountry != null && !productionCountry.isEmpty() && !productionCountry.isBlank()) {
-            this.productionCountry = productionCountry;
-        } else {
-            this.productionCountry = "Информация не указана!";
         }
         if (typeTransmission != null && !typeTransmission.isEmpty() && !typeTransmission.isBlank()) {
             this.typeTransmission = typeTransmission;
@@ -171,31 +131,11 @@ public class Car {
             this.insurance = insurance;
         }
         this.typeTires = true;
-        this.printCar();
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
+        this.refill();
     }
 
     public double getEngineVolume() {
         return engineVolume;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public int getProductionYear() {
-        return productionYear;
-    }
-
-    public String getProductionCountry() {
-        return productionCountry;
     }
 
     public String getTypeTransmission() {
@@ -238,14 +178,6 @@ public class Car {
         }
     }
 
-    public void setColor(String color) {
-        if (color != null && !color.isEmpty() && !color.isBlank()) {
-            this.color = color;
-        } else {
-            this.color = "Информация не указана!";
-        }
-    }
-
     public void setTypeTransmission(String typeTransmission) {
         if (typeTransmission != null && !typeTransmission.isEmpty() && !typeTransmission.isBlank()) {
             this.typeTransmission = typeTransmission;
@@ -279,6 +211,19 @@ public class Car {
         return false;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car car = (Car) o;
+        return Double.compare(car.getEngineVolume(), getEngineVolume()) == 0 && getCoastSeats() == car.getCoastSeats() && isTypeTires() == car.isTypeTires() && getTypeTransmission().equals(car.getTypeTransmission()) && getTypeCarcase().equals(car.getTypeCarcase()) && getRegistrationNumber().equals(car.getRegistrationNumber()) && getKey().equals(car.getKey()) && getInsurance().equals(car.getInsurance());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEngineVolume(), getTypeTransmission(), getTypeCarcase(), getRegistrationNumber(), getCoastSeats(), isTypeTires(), getKey(), getInsurance());
+    }
+
     public boolean checkRegNumber() {
         if (registrationNumber.length() != 9)
             return false;
@@ -290,5 +235,23 @@ public class Car {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return getBrand() + getModel() +
+                ", года выпуска " + getProductionYear() +
+                ", сборка в " + getProductionCountry() +
+                ", цвет кузова " + getColor() +
+                ", обьем двигателя " + engineVolume +
+                ", тип трансмиссии " + typeTransmission +
+                ", тип кузова " + typeCarcase +
+                ", регистрационный номер " + registrationNumber +
+                ", количество мест " + coastSeats +
+                ", тип шин " + (changeTires() ? "летняя" : "зимняя") +
+                ", доступ " + (getKey().isKeylessAccess() ? "ключевой" : "безключевой") +
+                ", номер страховки " + (getInsurance().getNumberInsurance()) +
+                ", цена страховки " + (getInsurance().getCostInsurance()) +
+                ", дата окончания страховки " + getInsurance().durationOfInsurance;
     }
 }
