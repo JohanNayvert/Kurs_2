@@ -1,8 +1,6 @@
 package com.skypro.Polimorfizm;
 
-import com.skypro.Polimorfizm.Transport.Buses;
-import com.skypro.Polimorfizm.Transport.Cars;
-import com.skypro.Polimorfizm.Transport.Trucks;
+import com.skypro.Polimorfizm.Transport.*;
 import com.skypro.Polimorfizm.Drivers.DriversB;
 import com.skypro.Polimorfizm.Drivers.DriversC;
 import com.skypro.Polimorfizm.Drivers.DriversD;
@@ -13,10 +11,10 @@ public class Main {
 
         System.out.println();
         System.out.println("Cars");
-        Cars audiA8 = new Cars("Audi", "A8", 1.6);
-        Cars bmvX5 = new Cars("BMV", "X5", 2.4);
-        Cars kiaSport = new Cars("Kia", "Sportage", 1.8);
-        Cars uazPatriot = new Cars("Uaz", "Patriot", 2.8);
+        Cars audiA8 = new Cars("Audi", "A8", 1.6, TypeCase.SEDAN);
+        Cars bmvX5 = new Cars("BMV", "X5", 2.4, TypeCase.CROSSOVER);
+        Cars kiaSport = new Cars("Kia", "Sportage", 1.8, TypeCase.HATCHBACK);
+        Cars uazPatriot = new Cars("Uaz", "Patriot", 2.8, TypeCase.UNIVERSAL);
         System.out.println(audiA8);
         System.out.println(bmvX5);
         System.out.println(kiaSport);
@@ -24,10 +22,10 @@ public class Main {
 
         System.out.println();
         System.out.println("Trucks");
-        Trucks uralNext = new Trucks("Ural", "Next", 6.7);
-        Trucks mercedesActros = new Trucks("Mercedes", "Actros", 15.6);
-        Trucks shaanqi = new Trucks("Shaanqi", "Shaanxi", 12.4);
-        Trucks hovo = new Trucks("HOWO", "T4", 14.2);
+        Trucks uralNext = new Trucks("Ural", "Next", 6.7, LoadCapacity.N1);
+        Trucks mercedesActros = new Trucks("Mercedes", "Actros", 15.6, LoadCapacity.N3);
+        Trucks shaanqi = new Trucks("Shaanqi", "Shaanxi", 12.4, LoadCapacity.N2);
+        Trucks hovo = new Trucks("HOWO", "T4", 14.2, LoadCapacity.N3);
         System.out.println(uralNext);
         System.out.println(mercedesActros);
         System.out.println(shaanqi);
@@ -35,10 +33,10 @@ public class Main {
 
         System.out.println();
         System.out.println("Buses");
-        Buses paz = new Buses("ПАЗ", "1211", 19.3);
-        Buses laz = new Buses("ЛАЗ", "1134", 19.8);
-        Buses ikarus = new Buses("Икарус", "B-343", 19.9);
-        Buses mercedesForse = new Buses("Mercedes", "Forse", 14.1);
+        Buses paz = new Buses("ПАЗ", "1211", 19.3, Bulk.LARGE);
+        Buses laz = new Buses("ЛАЗ", "1134", 19.8, Bulk.ESPECIALLY_LARGE);
+        Buses ikarus = new Buses("Икарус", "B-343", 19.9, Bulk.LARGE);
+        Buses mercedesForse = new Buses("Mercedes", "Forse", 14.1, Bulk.EXTRA_SMALL);
         System.out.println(paz);
         System.out.println(laz);
         System.out.println(ikarus);

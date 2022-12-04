@@ -1,16 +1,38 @@
 package com.skypro.Polimorfizm.Transport;
 
 public class Buses extends Transport implements Competing {
-    public Buses(String brand, String model, double engineVolume) {
+
+    private Bulk bulk;
+
+    public Buses(String brand, String model, double engineVolume, Bulk bulk) {
         super(brand, model, engineVolume);
+        this.bulk = bulk;
+    }
+
+    public Bulk getBulk() {
+        return bulk;
+    }
+
+    public void setBulk(Bulk bulk) {
+        this.bulk = bulk;
     }
 
     public String startMoving() {
         return "Автобус начал движние";
     }
 
+    @Override
     public String finishMoving() {
         return "Автобус закончил движние";
+    }
+
+    @Override
+    public void printType() {
+        if (bulk == null){
+            System.out.println("Данных недостаточно");
+        } else {
+            System.out.println("Вместимость: от " + bulk.getFrom() + " мест" + " до " + bulk.getTo() + " мест");
+        }
     }
 
     @Override

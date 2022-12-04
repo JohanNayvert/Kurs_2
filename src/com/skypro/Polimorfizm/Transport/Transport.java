@@ -68,4 +68,6 @@ public abstract class Transport {
     public abstract String startMoving();
 
     public abstract String finishMoving();
+
+    public abstract void printType();
 }
