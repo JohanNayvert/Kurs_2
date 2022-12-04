@@ -1,8 +1,20 @@
 package com.skypro.Polimorfizm.Transport;
 
 public class Trucks extends Transport implements Competing {
-    public Trucks(String brand, String model, double engineVolume) {
+
+    private LoadCapacity loadCapacity;
+
+    public Trucks(String brand, String model, double engineVolume, LoadCapacity loadCapacity) {
         super(brand, model, engineVolume);
+        this.loadCapacity = loadCapacity;
+    }
+
+    public LoadCapacity getLoadCapacity() {
+        return loadCapacity;
+    }
+
+    public void setLoadCapacity(LoadCapacity loadCapacity) {
+        this.loadCapacity = loadCapacity;
     }
 
     public String startMoving() {
@@ -11,6 +23,15 @@ public class Trucks extends Transport implements Competing {
 
     public String finishMoving() {
         return "Грузовик закончил движние";
+    }
+
+    @Override
+    public void printType() {
+        if (loadCapacity == null){
+            System.out.println("Данных недостаточно");
+        } else {
+            System.out.println("Грузоподьемность: от " + loadCapacity.getFrom() + " т." + " до " + loadCapacity.getTo() + " т.");
+        }
     }
 
     @Override
