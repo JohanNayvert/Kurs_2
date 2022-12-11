@@ -1,9 +1,15 @@
 package com.skypro.Polimorfizm;
 
+import com.skypro.Polimorfizm.Drivers.Drivers;
+import com.skypro.Polimorfizm.Support.ServiceStation;
 import com.skypro.Polimorfizm.Transport.*;
 import com.skypro.Polimorfizm.Drivers.DriversB;
 import com.skypro.Polimorfizm.Drivers.DriversC;
 import com.skypro.Polimorfizm.Drivers.DriversD;
+import com.skypro.Polimorfizm.Support.Sponsors;
+import com.skypro.Polimorfizm.Support.Mechanics;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -43,13 +49,61 @@ public class Main {
         System.out.println(mercedesForse);
 
         System.out.println();
-        System.out.println("Driver_B");
+        System.out.println("Driver");
         DriversB<Cars> pit = new DriversB<>("Piter Gray", "B", 8.6);
+        audiA8.addDriver(pit);
         System.out.println(pit + ", управляет - " + audiA8);
+        DriversB<Cars> smith = new DriversB<>("Jason Smith", "B", 12.5);
+        bmvX5.addDriver(smith);
+        System.out.println(smith + ", управляет - " + bmvX5);
         DriversC<Trucks> sem = new DriversC<>("Semuel Tarcov", "C", 6.3);
+        uralNext.addDriver(sem);
         System.out.println(sem + ", управляет - " + uralNext);
         DriversD<Buses> tom = new DriversD<>("Tomas Franklin", "D", 12.5);
+        ikarus.addDriver(tom);
         System.out.println(tom + ", управляет - " + ikarus);
+
+        System.out.println();
+        System.out.println("Sponsors");
+        Sponsors gazprom = new Sponsors("Газпром", 1500000);
+        audiA8.addSponsor(gazprom);
+        Sponsors vesternynion = new Sponsors("Вестерн Юнион", 900_000);
+        bmvX5.addSponsor(vesternynion);
+        Sponsors beeline = new Sponsors("Билайн", 1_600_000);
+        uralNext.addSponsor(beeline);
+        Sponsors anisimov = new Sponsors("ИП Анисимов(Фрукты и Овощи inc.)", 1_000_000_000);
+        ikarus.addSponsor(anisimov);
+        audiA8.addSponsor(anisimov);
+        bmvX5.addSponsor(anisimov);
+        uralNext.addSponsor(anisimov);
+        System.out.println(gazprom);
+        System.out.println(vesternynion);
+        System.out.println(beeline);
+        System.out.println(anisimov);
+
+        System.out.println();
+        System.out.println("Mechanics");
+        Mechanics<Cars> fred = new Mechanics<>("Fredi Doodls", "SupreComm");
+        audiA8.addMehanic(fred);
+        Mechanics<Cars> richard = new Mechanics<>("Richard Nikelson", "Ferrari");
+        bmvX5.addMehanic(richard);
+        Mechanics<Trucks> akaDodge = new Mechanics<>("Judi McFly", "DolcheRoni");
+        uralNext.addMehanic(akaDodge);
+        Mechanics<Buses> pol = new Mechanics<>("Poll Kertison", "Ford");
+        ikarus.addMehanic(pol);
+        System.out.println(fred);
+        System.out.println(richard);
+        System.out.println(akaDodge);
+        System.out.println(pol);
+
+        System.out.println();
+        System.out.println("Участники гонки: ");
+        List<Transport> transports = List.of(audiA8, bmvX5, uralNext, ikarus);
+
+        ServiceStation serviceStation = new ServiceStation();
+
+        for (Transport transport : transports)
+        Transport.printInfo(transport);
 
         System.out.println();
         System.out.println("Complete HomeWork");
