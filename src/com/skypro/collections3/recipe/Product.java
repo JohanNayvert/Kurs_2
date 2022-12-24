@@ -49,10 +49,10 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Objects.equals(name, product.name) && Objects.equals(weight, product.weight) && Objects.equals(cost, product.cost);
+        return Objects.equals(name, product.name);
     }
     @Override
     public int hashCode() {
-        return Objects.hash(name, weight, cost);
+        return Objects.hash(name);
     }
 }
